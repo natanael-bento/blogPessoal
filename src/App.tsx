@@ -1,34 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useEffect, useState } from 'react';
 import './App.css'
+import Navbar from './components/estaticos/navbar/Navbar';
+import Home from './paginas/home/Home';
+import Footer from './components/estaticos/footer/Footer';
+import Login from './paginas/login/Login';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import ListaTema from './components/temas/listaTema/ListaTema';
+import ListaPostagem from './components/postagens/listaPostagem/ListaPostagem';
+import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPost';
+import CadastroTema from './components/temas/cadastroTema/CadastroTema';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPost';
+import DeletarTema from './components/temas/deletarTema/deletarTema';
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <Navbar />
+      <div style={{ minHeight: '100vh' }}>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/cadastrousuario' element={<CadastroUsuario />} />
+          <Route path='/temas' element={<ListaTema />} />
+          <Route path='/post' element={<ListaPostagem />} />
+          <Route path='/formularioPostagem' element={<CadastroPostagem />} />
+          <Route path='/formularioPostagem/:id' element={<CadastroPostagem />} />
+          <Route path='/formularioTema' element={<CadastroTema />} />
+          <Route path='/formularioTema/:id' element={<CadastroTema />} />
+          <Route path='/deletarPostagem/:id' element={<DeletarPostagem />} />
+          <Route path='/deletarTema/:id' element={<DeletarTema />} />
+
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+      <Footer />
+    </BrowserRouter>
   )
 }
 
