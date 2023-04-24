@@ -9,10 +9,11 @@ import { useEffect, useState } from "react";
 import { buscaId, deleteId } from "../../../services/Service";
 
 function DeletarPostagem() {
+
     const history = useNavigate();
     const {id} = useParams<{id:string}>();
     const [token, setToken]= useLocalStorage('token');
-    const [post, setPosts] = useState<Postagem>();
+    const [postagens, setPostagens] = useState<Postagem>();
 
     useEffect(() => {
         if(token === ""){
@@ -28,7 +29,7 @@ function DeletarPostagem() {
     }, [id]);
 
     async function findById(id: string){
-        buscaId(`/postagens/${id}`, setPosts, {
+        buscaId(`/postagens/${id}`, setPostagens, {
             headers: {
                 "Authorization" : token
             }
@@ -36,7 +37,7 @@ function DeletarPostagem() {
     }
 
     function sim(){
-        history('/posts')
+        history('/postagens')
         deleteId(`/postagens/${id}`, {
             headers: {
                 'Authorization' : token
@@ -46,7 +47,7 @@ function DeletarPostagem() {
     }
 
     function nao (){
-        history('/posts')
+        history('/postagens')
     }
 
     return (
@@ -59,7 +60,7 @@ function DeletarPostagem() {
                                 Deseja deletar a postagem?
                             </Typography>
                             <Typography color="textSecondary" >
-                                {post?.titulo}
+                                {postagens?.titulo}
                             </Typography>
                         </Box>
 

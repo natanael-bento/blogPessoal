@@ -33,7 +33,7 @@ function Navbar() {
 
                         <Box display="flex" justifyContent="start">
 
-                            <Link to='/home' className='text'>
+                            <Link to={'/home'} className='text'>
                                 <Box mx={1} className="cursor">
                                     <Typography variant="h6" color="inherit">
                                         home
@@ -41,18 +41,18 @@ function Navbar() {
                                 </Box>
                             </Link>
 
-                            <Link to='/posts' className='text'>
+                            <Link to= {"/postagens"} className='text'>
                                 <Box mx={1} className="cursor">
                                     <Typography variant="h6" color="inherit">
-                                        postagens
+                                        Postagens
                                     </Typography>
                                 </Box>
                             </Link>
 
-                            <Link to='/temas' className='text'>
+                            <Link to={'/temas'} className='text'>
                                 <Box mx={1} className="cursor">
                                     <Typography variant="h6" color="inherit">
-                                        temas
+                                        Temas
                                     </Typography>
                                 </Box>
                             </Link>

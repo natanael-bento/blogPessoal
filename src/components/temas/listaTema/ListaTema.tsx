@@ -23,7 +23,7 @@ function ListaTema() {
     }, [token])
 
     async function getTema() {
-        await busca("/tema", setTemas, {
+        await busca("/tema  ", setTemas, {
             headers: {
                 'Authorization': token
             }

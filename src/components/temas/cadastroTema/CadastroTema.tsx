@@ -9,10 +9,13 @@ import { buscaId} from '../../../services/Service';
 
 
 function CadastroTema() {
+
     const history = useNavigate();
     const {id} = useParams<{id:string}>();
+
     const [token, setToken]= useLocalStorage('token');
     const [tema, setTema] = useState<Tema>({
+
         id: 0,
         descricao:''
     })
@@ -75,7 +78,7 @@ function CadastroTema() {
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
                 <Typography  variant="h3" color="textSecondary" component="h1" align="center" >
-                    Cadastrar Tema
+                 {tema.id !== 0 ? 'Editar tema' : 'Cadastrar tema'}
                 </Typography>
 
                 <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) =>

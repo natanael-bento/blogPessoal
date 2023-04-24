@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import Postagem from '../../../models/Postagem';
 import Tema from '../../../models/Tema';
-import './CadastroPostagem.css'
 import { busca, buscaId, post, put } from '../../../services/Service';
 
 

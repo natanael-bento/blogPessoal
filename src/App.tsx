@@ -8,9 +8,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import ListaTema from './components/temas/listaTema/ListaTema';
 import ListaPostagem from './components/postagens/listaPostagem/ListaPostagem';
-import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPost';
+import CadastroPostagem from './components/postagens/cadastroPostagem/CadastroPostagem';
 import CadastroTema from './components/temas/cadastroTema/CadastroTema';
-import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPost';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
 import DeletarTema from './components/temas/deletarTema/deletarTema';
 
 
@@ -26,7 +26,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/cadastrousuario' element={<CadastroUsuario />} />
           <Route path='/temas' element={<ListaTema />} />
-          <Route path='/post' element={<ListaPostagem />} />
+          <Route path='/postagens' element={<ListaPostagem />} />
           <Route path='/formularioPostagem' element={<CadastroPostagem />} />
           <Route path='/formularioPostagem/:id' element={<CadastroPostagem />} />
           <Route path='/formularioTema' element={<CadastroTema />} />

@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import './Home.css';
 import TabPostagem from "../../components/postagens/tabPostagem/TabPostagem";
 import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostagem';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { useEffect } from 'react';
 
@@ -37,21 +37,19 @@ function Home() {
             </Typography>
           </Box>
           <Box display="flex" justifyContent="center">
-            <Box marginRight={1}>
-              <ModalPostagem />
-            </Box>
-            <Button variant="outlined" className="botao"> Ver Postagens </Button>
-          </Box>
+      
+             <Link to={"/postagens"}>
+          
+                <Button variant="outlined" className="botao"> Ver Postagens </Button>
+            </Link>
+            <ModalPostagem />
+         </Box> 
         </Grid>
-        <Grid item xs={6}>
-          <img
-            src="https://i.imgur.com/5KtcxZC.png"
-            alt=""
-            className='fotoHome'
-          />
+        <Grid item xs={6} className='fotoHome'>
         </Grid>
         <Grid xs={12} className="postagens">
-          <TabPostagem />
+          <div> <TabPostagem /> </div>
+         
         </Grid>
       </Grid>
     </>
