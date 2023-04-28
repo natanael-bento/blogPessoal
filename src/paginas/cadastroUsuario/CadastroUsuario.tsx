@@ -4,6 +4,7 @@ import User from '../../models/User';
 import { cadastroUsuario } from '../../services/Service';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import './CadastroUsuario.css';
+import {toast} from 'react-toastify';
 
 
 
@@ -26,7 +27,7 @@ function CadastroUsuario() {
         foto: ''
     });
 
-    const [confirmarSenha, setConfirmarSenha] = useState<String>("");
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
 
 
     function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
@@ -44,16 +45,43 @@ function CadastroUsuario() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (confirmarSenha === user.senha) {
+        if (confirmarSenha === user.senha && user.senha.length >= 8 ) {
             try {
                 await cadastroUsuario('/usuarios/cadastrar', user, setUserResult);
-                alert('Usuário cadastrado com sucesso! :)')
+                toast.success("Usuario cadastrado com sucesso \(*-*)/", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                });
             } catch (error) {
-                alert('Por favor, verifique os campos')
-            };
+                toast.error("Voçê digitou algum campo errado, presta atenção!", {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined,
+                });
+            }
 
         } else {
-            alert('As senhas são diferentes! (-_-)')
+            toast.error("As senhas são diferentes! (-_-)", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
 
             setConfirmarSenha('');
 

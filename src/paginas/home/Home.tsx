@@ -7,16 +7,31 @@ import ModalPostagem from '../../components/postagens/modalPostagem/ModalPostage
 import { useNavigate, Link } from 'react-router-dom';
 import useLocalStorage from 'react-use-localstorage';
 import { useEffect } from 'react';
-
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
+import {toast} from 'react-toastify';
+import ListaPostagem from "../../components/postagens/listaPostagem/ListaPostagem";
 
 function Home() {
 
   const history = useNavigate();
-  const [token, setToken] = useLocalStorage('token');
+  
+  const token = useSelector<TokenState, TokenState['tokens']>(
+    (state) => state.tokens
+  )
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisar está logado!");
+      toast.error("Você precisar está logado!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+    });
       history("/login")
     }
   }, [token])
@@ -39,17 +54,17 @@ function Home() {
           <Box display="flex" justifyContent="center">
       
              <Link to={"/postagens"}>
-          
                 <Button variant="outlined" className="botao"> Ver Postagens </Button>
             </Link>
+
             <ModalPostagem />
+
          </Box> 
         </Grid>
         <Grid item xs={6} className='fotoHome'>
         </Grid>
-        <Grid xs={12} className="postagens">
-          <div> <TabPostagem /> </div>
-         
+        <Grid xs={12} className="postagens"> 
+         <ListaPostagem/>
         </Grid>
       </Grid>
     </>
