@@ -5,7 +5,7 @@ interface Postagens{
   titulo: string;
   texto: string;
   data: string
-  temas: Tema | null
+  tema: Tema | null
 }
 
 export default Postagens;

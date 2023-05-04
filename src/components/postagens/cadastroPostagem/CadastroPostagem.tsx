@@ -47,14 +47,14 @@ function CadastroPostagem() {
     id: 0,
     titulo: "",
     texto: "",
-    temas: null,
+    tema: null,
     data: ''
   });
 
   useEffect(() => {
     setPostagem({
       ...postagem,
-      temas: tema,
+      tema: tema,
     });
   }, [tema]);
 
@@ -85,7 +85,7 @@ function CadastroPostagem() {
     setPostagem({
       ...postagem,
       [e.target.name]: e.target.value,
-      temas: tema,
+      tema: tema,
     });
   }
 
